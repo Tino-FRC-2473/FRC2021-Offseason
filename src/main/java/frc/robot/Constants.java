@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants. This class should not be used for any other
@@ -19,21 +21,40 @@ package frc.robot;
  */
 public final class Constants {
 
-    public static final int TEST_PORT = 11; 
-    public static final double ENCODER_INCHES_TO_TICKS = 1; 
+	public static final int TEST_PORT = 11;
+	public static final double ENCODER_INCHES_TO_TICKS = 1;
 
-    public static final int SPARK_FRONT_LEFT_ID = 1; 
-    public static final int SPARK_BACK_LEFT_ID = 2; 
-    public static final int SPARK_FRONT_RIGHT_ID = 3; 
-    public static final int SPARK_BACK_RIGHT_ID = 4; 
+	public static final int SPARK_FRONT_LEFT_ID = 1;
+	public static final int SPARK_BACK_LEFT_ID = 2;
+	public static final int SPARK_FRONT_RIGHT_ID = 3;
+	public static final int SPARK_BACK_RIGHT_ID = 4;
 
-   public static final double DRIVE_P = 5e-4; 
-   public static final double DRIVE_I = 0; 
-   public static final double DRIVE_D = 0; 
+	public static final double DRIVE_P = 5e-4;
+	public static final double DRIVE_I = 0;
+	public static final double DRIVE_D = 0;
 
-   public static final double DRIVE_TICKS_PER_INCH = 1; 
+	public static final double DRIVE_TICKS_PER_INCH = 1;
 
-   public static final int JOYSTICK_1_PORT = 1; 
-   public static final int JOYSTICK_2_PORT = 2; 
+	public static final int JOYSTICK_1_PORT = 1;
+	public static final int JOYSTICK_2_PORT = 2;
 
+	// Trajectory constants *These are not accurate*
+	public static final double KS_VOLTS = 0.22;
+	public static final double KV_VOLT_SEC_PER_METER = 1.98;
+	public static final double KA_VOLT_SEC_SQUARED_PER_METER = 0.2;
+
+	public static final double KP_DRIVE_VEL = 8.5;
+
+	public static final double K_TRACKWIDTH_METERS = 0.69;
+	public static final DifferentialDriveKinematics K_DRIVE_KINEMATICS = new DifferentialDriveKinematics(
+			K_TRACKWIDTH_METERS);
+	
+	public static final double K_MAX_SPEED_METERS_PER_SECOND = 3;
+	public static final double K_MAX_ACCELERATION_METERS_PER_SECOND_QUARED = 3;
+
+	public static final double K_RAMSETE_B = 2;
+	public static final double K_RAMSETE_BETA = 0.7;
+	
+	public static final boolean GYRO_REVERSED = true;
+	
 }

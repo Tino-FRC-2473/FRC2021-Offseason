@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -15,7 +16,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.geometry.Pose2d;
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
 
 public class DriveSubsystem extends SubsystemBase {
 	/**
@@ -26,10 +31,13 @@ public class DriveSubsystem extends SubsystemBase {
 	CANSparkMax backLeftMotor; 
 	CANSparkMax frontRightMotor; 
 	CANSparkMax backRightMotor; 
-
+	
 	SpeedControllerGroup leftSpeedControllerGroup;
 	SpeedControllerGroup rightSpeedControllerGroup; 
 	DifferentialDrive differentialDrive;
+
+	AHRS gyro;
+	private DifferentialDriveOdometry odometry;
 
 	public DriveSubsystem() {
 
@@ -42,11 +50,18 @@ public class DriveSubsystem extends SubsystemBase {
 		rightSpeedControllerGroup = new SpeedControllerGroup(frontRightMotor, backRightMotor);
 		
 		differentialDrive = new DifferentialDrive(leftSpeedControllerGroup, rightSpeedControllerGroup); 
-		
+
+		gyro = new AHRS(Port.kMXP);
+		odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(getHeading()));
+
 		initPID();
 	}
 
-	public void powerDrive(double leftPower, double rightPower) { 
+	private double getHeading() {
+		return Math.IEEEremainder(gyro.getAngle(), 360) * (Constants.GYRO_REVERSED ? -1.0 : 1.0);
+	}
+
+	public void powerDrive(double leftPower, double rightPower) {
 		leftSpeedControllerGroup.set(leftPower); 
 		rightSpeedControllerGroup.set(rightPower);
 	}
@@ -85,11 +100,18 @@ public class DriveSubsystem extends SubsystemBase {
 		differentialDrive.stopMotor();
 	}
 
+	public Pose2d getPose() {
+		return odometry.getPoseMeters();
+	}
+
 	
 
 	@Override
 	public void periodic() {
 
 		// This method will be called once per scheduler run
+		double leftDistanceMeters = 0; // TODO: change with new values
+		double rightDistanceMeters = 0; // TODO: change with new values
+		odometry.update(Rotation2d.fromDegrees(getHeading()), leftDistanceMeters, rightDistanceMeters);
 	}
 }
