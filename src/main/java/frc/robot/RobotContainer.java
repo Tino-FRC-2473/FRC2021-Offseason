@@ -138,7 +138,7 @@ public class RobotContainer {
 		button6.whenReleased(() -> shooterSubsystem.offFeeder());
 		button8.whenReleased(() -> shooterSubsystem.testFeeder());
 
-		button1.whenPressed(() -> shooterSubsystem.run(0.5));
+	button1.whenPressed(() -> shooterSubsystem.run(0.5));
 		button3.whenPressed(() -> shooterSubsystem.run(0.65));
 		button5.whenPressed(() -> shooterSubsystem.run(0.75));
 		button7.whenPressed(() -> shooterSubsystem.run(0.8));
@@ -150,10 +150,10 @@ public class RobotContainer {
 		// 0.8, 0.6
 		// 0.8, 0.7
 
-		// button1.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.6, 0.8));
-		// button3.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.7, 0.8));
-		// button5.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.8, 0.6));
-		// button7.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.8, 0.7));
+		//button1.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.6, 0.8));
+		//button3.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.5, 0.9));
+		//button5.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.8, 0.6));
+		//button7.whenPressed(() -> shooterSubsystem.runDifferentSpeeds(0.9, 0.5));
 
 
 
