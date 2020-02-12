@@ -17,19 +17,23 @@ import edu.wpi.first.wpilibj2.command.Command;
 /**
  * An example command that uses an example subsystem.
  */
-public class TestMotorByTimeCommand extends CommandBase {
+public class ClimberExtend extends CommandBase {
 	@SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 	
 	private TestMotorSubsystem testMotorSubsystem;
 	private double power; 
+	private double encoderInit; 
+	
 
 	/**
 	 * Creates a new ExampleCommand.
 	 *
 	 * @param subsystem The subsystem used by this command.
 	 */
-	public TestMotorByTimeCommand(TestMotorSubsystem subsystem, double power) {
-		this.power = power; 
+	public ClimberExtend(TestMotorSubsystem subsystem, double power) {
+		this.power = -power; //reverse power
+		
+		
 		
 		testMotorSubsystem = subsystem;
 		// Use addRequirements() here to declare subsystem dependencies.
@@ -40,13 +44,15 @@ public class TestMotorByTimeCommand extends CommandBase {
 	@Override
 	public void initialize() {
 		
-		testMotorSubsystem.setPower(power);
+		
+		//encoderInit = testMotorSubsystem.getEncoderPosition(); 
+		
+		
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() { 
-		System.out.println(testMotorSubsystem.getMotor().getOutputCurrent());
 	}
 
 	// Called once the command ends or is interrupted.

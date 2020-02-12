@@ -72,7 +72,7 @@ public class RobotContainer {
 		
 		
 		
-		return new InstantCommand(() -> testMotorSubsystem.setPower(-0.5), testMotorSubsystem);
-		// return testMotorEncoderCommand;
+		//return new InstantCommand(() -> testMotorSubsystem.setPower(0.9), testMotorSubsystem);
+		return new TestMotorByTimeCommand(testMotorSubsystem, 0.6); 
 	}
 }

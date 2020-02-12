@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
+import com.revrobotics.SparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.Constants;
@@ -46,10 +47,18 @@ public class TestMotorSubsystem extends SubsystemBase {
 
 	public void setPower(double power){
 		testMotor.set(power);
+		System.out.println(testMotor.getOutputCurrent());
+		
+		
+
 	}
 
 	public void setPowerTalon(double power){
 		testMotorT.set(power); 
+	}
+
+	public CANSparkMax getMotor(){
+		return testMotor; 
 	}
 
 	
@@ -57,5 +66,9 @@ public class TestMotorSubsystem extends SubsystemBase {
 	@Override
 	public void periodic() {
 		// This method will be called once per scheduler run
+
 	}
+
+	
+	
 }
