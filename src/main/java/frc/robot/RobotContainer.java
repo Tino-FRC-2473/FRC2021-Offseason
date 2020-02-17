@@ -55,11 +55,11 @@ public class RobotContainer {
 	 * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
 	 */
 	private void configureButtonBindings() {
-		buttonPanel = new Joystick(Constants.JOYSTICK_BUTTON_PANEL); 
-		button1 = new JoystickButton(buttonPanel, 1); 
-		button3 = new JoystickButton(buttonPanel, 3); 
-		button1.whenPressed(new TestMotorTeleopCommand(testMotorSubsystem, 0.8)); 
-		button3.whenPressed(new TestMotorTeleopCommand(testMotorSubsystem, 0)); 
+		// buttonPanel = new Joystick(Constants.JOYSTICK_BUTTON_PANEL); 
+		// button1 = new JoystickButton(buttonPanel, 1); 
+		// button3 = new JoystickButton(buttonPanel, 3); 
+		// button1.whenPressed(new TestMotorTeleopCommand(testMotorSubsystem, 0.8)); 
+		// button3.whenPressed(new TestMotorTeleopCommand(testMotorSubsystem, 0)); 
 	}
 
 	/**
